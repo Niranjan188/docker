@@ -1,16 +1,11 @@
-# Use an OpenJDK Runtime as the base image
+# Use Java 17 base image
 FROM eclipse-temurin:17-jdk-alpine
-WORKDIR /app
-COPY . .
-# Adjust the line below to match your actual JAR filename
-CMD ["java", "-jar", "app.jar"]
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the JAR file built by Maven into the container
-# Note: Ensure the filename matches what Maven generated in your logs
+# Copy only the built JAR
 COPY target/simple-java-app-1.0.jar app.jar
 
-# Command to run the application
+# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
