@@ -12,11 +12,12 @@ spec:
       labels:
         app: java-app
     spec:
-      containers:        # This must be under spec -> template -> spec
-      - name: java-app
-        image: niranjanvr/java-app:latest
-        ports:
-        - containerPort: 8080
+      containers:
+- name: java-app
+  image: niranjanvr/java-app:latest   # ✅ must match docker push
+  imagePullPolicy: Always
+  ports:
+  - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
